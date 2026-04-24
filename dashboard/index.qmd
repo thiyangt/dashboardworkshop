@@ -16,6 +16,7 @@ library(scales) # For percentage formatting
 library(RColorBrewer) # For Dark2 color palette
 library(plotly)
 library(GGally)
+library(crosstalk)
 ```
 
 
@@ -140,6 +141,4 @@ pairs <- penguins |>
 ggplotly(pairs)
 ```
 
-# Gender-wise Comparison
-
-# Species-wise Comparison
+# Filter and Plot
