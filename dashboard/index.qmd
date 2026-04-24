@@ -1,0 +1,91 @@
+---
+title: "Exploring Penguin Species"
+format: dashboard
+editor: source
+theme: 
+    - yeti
+---
+
+```{r}
+#| label: load-packages
+#| message: false
+#| warning: false
+library(ggplot2)
+library(tidyverse)
+```
+
+
+```{r}
+#| label: load-data
+#| message: false
+#| warning: false
+data("penguins")
+#if the data is saved in a CSVfile
+# data <- read_csv("datafilename.csv")
+```
+
+
+# Overview
+
+## Row {height="20%"}
+
+```{r}
+#| content: valuebox
+#| title: "Total births"
+
+list(
+  icon = "file-medical",
+  color = "primary",
+  value = 25
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "Cesarean deliveries"
+
+list(
+  icon = "clipboard2-pulse",
+  color = "red",
+  value = 5
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "Pre-term births"
+
+list(
+  icon = "calendar-week",
+  color = "blue",
+  value = 20
+)
+```
+
+## Row {height="40%"}
+
+### Column {width="40%"}
+
+```{r}
+ggplot(penguins, aes(x = species, fill=species)) +
+  geom_bar() +
+  labs(title = "How many penguins of each species?",
+       x = "Species", y = "Count")
+```
+
+### Column {width="60%"}
+
+
+```{r}
+penguins |>
+  ggplot(aes(x = island, fill = species)) +
+  geom_bar(position = "dodge") +
+  labs(title = "Counts by island and species (side-by-side)",
+       x = "Island", y = "Count")
+```
+
+# Body Size Relationships
+
+# Gender-wise Comparison
+
+# Species-wise Comparison

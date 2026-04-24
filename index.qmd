@@ -1,0 +1,204 @@
+---
+title: "Build Impactful Data Visualization Dashboards"
+format: revealjs
+editor: source
+author: "Dr Thiyanga S. Talagala"
+---
+
+## Outline
+
+## Components of a Dashboard
+
+1. Title/Header
+
+2. Navigation menu
+
+3. Key Performance Indicators (KPIs)
+
+4. Filters and controls
+
+5. Export/Download options
+
+6. Data visualisations
+
+<!--Clearly indicates the purpose or subject of the dashboard.-->
+
+
+
+<!--Allows users to move between different sections or pages of the dashboard.-->
+
+
+
+<!--Displays the most important metrics or data points relevant to the user’s goals.-->
+
+
+
+<!--Tools like dropdowns, sliders, or checkboxes that allow users to customize the data displayed.-->
+
+
+<!--Enables users to export data or visuals for offline use or reporting.-->
+
+# First Steps in Analyzing a Dataset
+
+## Step 1
+
+1. What is the main research question?
+
+2. What decision should this analysis support?
+
+3. What problem are we trying to solve?
+
+## Step 2
+
+1. Determine  the target variable(s) (response variable,
+dependent variable, outcome variable)
+
+The main outcome you want to study, predict, or explain.
+  
+2. Identify the explanatory variables (predictor variables,
+independent variables, impacting variables, covariates): 
+
+These are the variables that may influence the response variable.
+
+
+## Important Note
+
+For some datasets, there may not be a clearly defined response variable.
+
+This commonly happens in:
+
+Exploratory Data Analysis (EDA)
+
+Clustering
+
+Unsupervised Learning
+
+Pattern discovery
+
+Data summarization studies
+
+In such cases, the goal is not prediction, but understanding structure, relationships, or hidden patterns in the data.
+
+## Step 3
+
+1. Classify variables into: categorical variables and quantitative variables
+
+2. Identify the scale of measurements
+
+## Step 4
+
+> Check Data Quality
+
+Inspect for:
+
+Missing values
+
+Duplicate records
+
+Outliers
+
+Incorrect entries
+
+Inconsistent coding
+
+Unit mismatches
+
+# Step 5: Simple Roadmap for Data Analysis
+
+## 1. Start with Univariate Data Exploration
+
+Begin by looking at one variable at a time.
+
+**You try to understand:**
+
+What values are present?
+
+How are they distributed?
+
+Are there any missing values or outliers?
+
+## 2. Then Go for Bivariate Analysis
+
+Next, study two variables at a time to see relationships.
+
+👉 Goal: Understand relationships between variables.
+
+You explore:
+
+How one variable changes with another
+Whether there is an association or correlation
+
+## 3. Move to Important Three-Variable Analysis
+
+Then consider three variables together to understand deeper patterns.
+
+👉 Goal: Understand how one relationship depends on another factor.
+
+You explore:
+
+Whether a relationship changes with a third variable
+Interaction effects
+
+## 4. High-Dimensional Data Analysis
+
+Finally, analyze many variables at the same time.
+
+👉 Goal: Simplify complex data and find structure.
+
+This is used when datasets have large number of variables of variables.
+
+## Summary Flow
+
+Univariate → understand each variable
+
+Bivariate → understand relationships
+
+Three-variable → understand interactions
+
+High-dimensional → reduce complexity and find patterns
+
+# Dashboard with Quarto
+
+
+## Open Quarto Document
+
+File -> New File -> Quarto Document -> Select HTML and click "Create"
+
+## Dashboard themes
+
+::: columns
+
+::: column
+- default
+- cerulean
+- cosmo
+- cyborg
+- darkly
+- flatly
+- journal
+- litera
+- lumen
+- lux
+- materia
+:::
+
+::: column
+- minty
+- morph
+- pulse
+- quartz
+- sandstone
+- simplex
+- sketchy
+- slate
+- solar
+- spacelab
+- superhero
+- united
+- vapor
+- yeti
+:::
+
+:::
+
+
