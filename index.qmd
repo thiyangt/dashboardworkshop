@@ -202,3 +202,6 @@ File -> New File -> Quarto Document -> Select HTML and click "Create"
 :::
 
 
+## To select icons
+
+[https://fontawesome.com/v5/search](https://fontawesome.com/v5/search)

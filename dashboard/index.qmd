@@ -12,6 +12,10 @@ theme:
 #| warning: false
 library(ggplot2)
 library(tidyverse)
+library(scales) # For percentage formatting
+library(RColorBrewer) # For Dark2 color palette
+library(plotly)
+library(GGally)
 ```
 
 
@@ -22,6 +26,27 @@ library(tidyverse)
 data("penguins")
 #if the data is saved in a CSVfile
 # data <- read_csv("datafilename.csv")
+
+```
+
+```{r}
+#| label: cleandata
+names(penguins)[names(penguins) == "sex"] <- "gender"
+penguins_complete <- penguins |>
+  drop_na()
+quartiles <- quantile(penguins_complete$body_mass, probs = c(0.1, 0.5, 0.8))
+
+pf <- penguins_complete |>
+  mutate(BMI_category = case_when(
+    body_mass <= quartiles[1] ~ "Underweight",
+    body_mass > quartiles[1] & body_mass <= quartiles[2] ~ "Normal",
+    body_mass > quartiles[2] & body_mass <= quartiles[3] ~ "Overweight",
+    body_mass > quartiles[3] ~ "Obese"
+  ))
+
+pf2 <- pf |> select(species, island, gender, BMI_category)
+pf2$BMI_category <- factor(pf2$BMI_category, levels=c("Underweight", "Normal",
+"Overweight", "Obese"))
 ```
 
 
@@ -31,33 +56,33 @@ data("penguins")
 
 ```{r}
 #| content: valuebox
-#| title: "Total births"
+#| title: "Adelie"
 
 list(
-  icon = "file-medical",
-  color = "primary",
-  value = 25
+  icon = "feather",
+  color = "#d95f02",
+  value = 146
 )
 ```
 
 ```{r}
 #| content: valuebox
-#| title: "Cesarean deliveries"
+#| title: "Chinstrap"
 
 list(
-  icon = "clipboard2-pulse",
-  color = "red",
+  icon = "feather",
+  color = "#7570b3",
   value = 5
 )
 ```
 
 ```{r}
 #| content: valuebox
-#| title: "Pre-term births"
+#| title: "Gentoo"
 
 list(
-  icon = "calendar-week",
-  color = "blue",
+  icon = "feather",
+  color = "#1b9e77",
   value = 20
 )
 ```
@@ -67,24 +92,53 @@ list(
 ### Column {width="40%"}
 
 ```{r}
-ggplot(penguins, aes(x = species, fill=species)) +
-  geom_bar() +
-  labs(title = "How many penguins of each species?",
-       x = "Species", y = "Count")
+p1 <- pf |>
+  ggplot(aes(x=species,  fill = factor(BMI_category))) + 
+  geom_bar( position = 'dodge') + labs(fill = "BMI Category", x="Species", y="Counts") + ggtitle(" Composition of the Sample by Species and BMI Category")
+ggplotly(p1)
 ```
 
-### Column {width="60%"}
+### Column {width="40%"}
 
 
 ```{r}
-penguins |>
-  ggplot(aes(x = island, fill = species)) +
+p2 <- penguins |>
+  ggplot(aes(x = species, fill = island)) +
   geom_bar(position = "dodge") +
-  labs(title = "Counts by island and species (side-by-side)",
-       x = "Island", y = "Count")
+  labs(title = "Composition of the Sample by Species and Island",
+       x = "Species", y = "Count")
+ggplotly(p2)
+```
+
+### Column {width="40%"}
+
+```{r}
+p3 <- penguins |>
+  ggplot(aes(x = species, fill = gender)) +
+  geom_bar(position = "dodge") +
+  labs(title = "Composition of the Sample by Species and Gender",
+       x = "Species", y = "Count")
+ggplotly(p3)
 ```
 
 # Body Size Relationships
+
+
+
+```{r}
+#| message: false
+#| warning: false
+
+pairs <- penguins |>
+  select(species, bill_len, bill_dep, flipper_len, body_mass) |>
+  GGally::ggpairs(
+    aes(color = species),
+    columns = c("bill_len", "bill_dep", "flipper_len", "body_mass")
+  ) +
+  scale_colour_manual(values = c("darkorange", "purple", "cyan4")) +
+  scale_fill_manual(values = c("darkorange", "purple", "cyan4"))
+ggplotly(pairs)
+```
 
 # Gender-wise Comparison
 
