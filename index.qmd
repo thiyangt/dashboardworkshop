@@ -7,6 +7,10 @@ author: "Dr Thiyanga S. Talagala"
 
 ## Outline
 
+- Dashboard Building
+
+- Using AI as a Dashboard Co-Designer
+
 ## Components of a Dashboard
 
 1. Title/Header
