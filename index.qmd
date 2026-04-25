@@ -217,3 +217,9 @@ By default, dashboard pages are laid out first by row, then by column. However, 
 ## To select icons
 
 [https://fontawesome.com/v5/search](https://fontawesome.com/v5/search)
+
+## Deployment
+
+Reading:
+
+[https://quarto.org/docs/dashboards/deployment.html](https://quarto.org/docs/dashboards/deployment.html)
