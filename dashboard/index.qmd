@@ -4,6 +4,7 @@ format: dashboard
 editor: source
 theme: 
     - yeti
+author: "Thiyanga S. Talagala"
 ---
 
 ```{r}
@@ -141,4 +142,14 @@ pairs <- penguins |>
 ggplotly(pairs)
 ```
 
-# Filter and Plot
+# Data
+
+```{r}
+#| message: false
+#| warning: false
+
+library(DT)
+
+datatable(penguins)
+```
+
