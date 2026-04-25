@@ -153,3 +153,72 @@ library(DT)
 datatable(penguins)
 ```
 
+# More Plots
+
+## Column {.tabset}
+
+### Map
+
+```{r}
+#| title: Map of Islands
+# Install packages if needed
+# install.packages(c("leaflet", "palmerpenguins", "dplyr"))
+
+library(leaflet)
+library(palmerpenguins)
+library(dplyr)
+
+# Create approximate coordinates for the islands
+# (Palmer Penguins dataset does not include latitude/longitude,
+# so we manually assign approximate locations)
+
+island_map <- data.frame(
+  island = c("Biscoe", "Dream", "Torgersen"),
+  lat = c(-65.43, -64.73, -64.77),
+  lon = c(-65.50, -64.23, -64.08)
+)
+
+# Count number of penguins by island
+penguin_counts <- penguins %>%
+  group_by(island) %>%
+  summarise(count = n())
+
+# Merge counts with coordinates
+map_data <- left_join(island_map, penguin_counts, by = "island")
+
+# Create leaflet map
+leaflet(map_data) %>%
+  addTiles() %>%
+  addCircleMarkers(
+    lng = ~lon,
+    lat = ~lat,
+    radius = ~count / 10,
+    popup = ~paste0(
+      "<b>Island:</b> ", island, "<br>",
+      "<b>Penguin Count:</b> ", count
+    ),
+    label = ~island
+  ) %>%
+  setView(
+    lng = -64.5,
+    lat = -65.0,
+    zoom = 6
+  )
+```
+
+### Sample Size
+
+```{r}
+#| title: Chart 2
+#| content: valuebox
+list(
+  title = "Total Penguins",
+  value = nrow(penguins)
+)
+```
+
+# About
+
+Author: Dr Thiyanga S. Talagala
+
+Email: ttalagala@sjp.ac.lk

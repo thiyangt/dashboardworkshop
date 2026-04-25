@@ -201,6 +201,18 @@ File -> New File -> Quarto Document -> Select HTML and click "Create"
 
 :::
 
+## Layout
+
+Demo
+
+Reading:
+
+[https://quarto.org/docs/dashboards/layout.html](https://quarto.org/docs/dashboards/layout.html)
+
+Note:
+
+By default, dashboard pages are laid out first by row, then by column. However, you can change this by specifying the orientation: columns document option:
+
 
 ## To select icons
 
